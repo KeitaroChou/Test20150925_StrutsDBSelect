@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.action.extension" value="action, do" />
+
+	<package name="control" namespace="/control" extends="struts-default">
+		
+		<!-- 自訂攔截器 -->
+		<!-- <interceptors>
+			<interceptor name="permission" class="idv.people.util.LoginInterceptor" />
+			<interceptor-stack name="permissionStack">
+				interceptor-ref 的其他 name 預設選項請見 struts-default.xml
+				<interceptor-ref name="defaultStack" />	系統預設先設
+				<interceptor-ref name="permission" />	再設自訂攔截器
+			</interceptor-stack>
+		</interceptors> -->
+		
+		<!-- 攔截到的 HTTP 500 引導 -->
+		<global-results>
+			<result name="error">/WEB-INF/page/datanotfound.jsp</result>
+		</global-results>
+		<!-- HTTP 500 攔截 -->
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+		<action name="main">
+			<result>/WEB-INF/page/main.jsp</result>
+		</action>
+		<!-- <action name="toLoginTest">
+			<result>/WEB-INF/page/notlogin.jsp</result>
+		</action> -->
+		<action name="loginCheck" class="idv.people.login.LoginCheck" method="excute">
+			<result name="loginSuccess">/WEB-INF/page/loginsuccess.jsp</result>
+			<result name="loginFail">/WEB-INF/page/loginfail.jsp</result>
+		</action>
+		<action name="test_*" class="idv.people.model.PeopleDTO" method="{1}">
+			<result name="nameSelectSuccess">/WEB-INF/page/nameselect.jsp</result>
+			<result name="selectAllSuccess">/WEB-INF/page/peoplelist.jsp</result>
+			<result name="requirementSelectSuccess">/WEB-INF/page/peoplelist.jsp</result>
+			<result name="addPeopleSuccess">/WEB-INF/page/addsuccess.jsp</result>
+			<result name="updatePeopleSuccess">/WEB-INF/page/updatesuccess.jsp</result>
+			<result name="deletePeopleSuccess">/WEB-INF/page/deletesuccess.jsp</result>
+		</action>
+		<action name="updateindex" class="idv.people.model.PeopleDTO" method="uidSelect">
+			<result name="uidSelectSuccess">/WEB-INF/page/update.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

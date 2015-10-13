@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+	
+		<!-- 資料庫驅動類別 -->
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		
+		<!-- 設定 dialect，明確告訴 Hibernate 連接哪種資料庫 -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<!-- 資料庫位址及資料庫名稱 -->
+		<property name="hibernate.connection.url">
+			jdbc:mysql://klaus-macbook-air.local:3306/test?useUnicode=true&amp;characterEncoding=utf-8
+		</property>
+
+		<!-- 呼叫資料庫的使用者名稱與密碼 -->
+		<property name="hibernate.connection.username">klaus</property>
+		<property name="hibernate.connection.password">klaus580925</property>
+		
+		<!-- 印出 Hibernate 所轉換出的 SQL 指令 -->
+		<property name="show_sql">true</property>
+		<!-- 指定映射檔(文件)列表 -->
+		<mapping resource="idv/people/model/People.hbm.xml" />
+		<mapping resource="idv/people/login/LoginUser.hbm.xml" />
+
+	</session-factory>
+
+</hibernate-configuration>

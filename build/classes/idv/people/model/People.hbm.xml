@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="idv.people.model">
+	<class name="People" table="Test20150921">
+	
+		<id name="uid" column="uid" type="java.lang.Integer">
+			<generator class="increment" />
+		</id>
+
+		<property name="name" column="name" type="java.lang.String" not-null="false" />
+		<property name="sex" column="sex" type="java.lang.String" not-null="false" />
+		<property name="old" column="old" type="java.lang.Integer" not-null="false" />
+		<property name="publishingTime" column="publishingTime" type="java.util.Date" not-null="false" />
+		<property name="photo" column="photo" type="java.sql.Blob" not-null="false" />
+
+	</class>
+</hibernate-mapping>
